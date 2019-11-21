@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /flask-app
+ permissions:
+   - object: /flask-app/startApp.sh
+     mode: 777
+ hooks:
+   ApplicationStart:
+     - location: startApp.sh
+        timeout: 30
