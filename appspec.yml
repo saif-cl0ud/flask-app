@@ -8,5 +8,5 @@ permissions:
      mode: 777
 hooks:
    ApplicationStart:
-     - location: startApp.sh
-        timeout: 30
+     - location: /flask-app/startApp.sh
+       timeout: 30
