@@ -4,9 +4,9 @@ files:
   - source: /
     destination: /flask-app
 permissions:
-   - object: /flask-app/startApp.sh
+   - object: /startApp.sh
      mode: 777
 hooks:
    ApplicationStart:
-     - location: /flask-app/startApp.sh
+     - location: /startApp.sh
        timeout: 30
