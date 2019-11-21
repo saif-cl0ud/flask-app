@@ -1,2 +1,2 @@
 sudo pkill "python"
-sudo python ~/flask-app/app.py
+sudo python app.py
