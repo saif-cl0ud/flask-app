@@ -1,3 +1,4 @@
+imageTag="test"
 pipeline {
   environment {
       Namespace = "default"
