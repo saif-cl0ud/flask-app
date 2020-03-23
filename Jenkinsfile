@@ -10,6 +10,7 @@ pipeline {
       // Production branch
       when { branch 'master' }
       steps{
+        sh 'printenv'
         echo 'To access your environment run'
       }
     }
