@@ -1,4 +1,4 @@
-pipeliine {
+pipeline {
   environment {
       Namespace = "default"
       ImageName = "saifrahm/flask-app"
