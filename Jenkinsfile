@@ -24,12 +24,18 @@ pipeline {
         }
       }
     }
+    stage('Deploy Canary') {
+      // Canary branch
+      when { branch 'canary' }
+      steps {
+         sh "/usr/local/bin/helm --kubeconfig /var/cluster150/admin.conf upgrade flaskapp /var/demochart --set image.tag=${imageTag} --install --namespace ${Namespace} --wait"
+        }
+      }
     stage('Deploy Production') {
       // Production branch
       when { branch 'master' }
       steps{
-        sh 'printenv'
-        echo 'To access your environment run'
+        sh "/usr/local/bin/helm --kubeconfig /var/cluster150/admin.conf upgrade flaskapp /var/demochart --set image.tag=${imageTag} --install --namespace ${Namespace} --wait"
       }
     }
     }
