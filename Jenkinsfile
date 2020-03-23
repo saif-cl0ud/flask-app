@@ -6,6 +6,20 @@ pipeline {
   }
   agent any
   stages {
+    stage('Checkout') {
+      steps {
+        sh 'printenv'
+        sh "git rev-parse --short HEAD > .git/commit-id"
+        imageTag= readFile('.git/commit-id').trim()
+      }
+    }
+    stage('Build and push image with Container Builder') {
+      steps {
+        withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
+        sh "docker build -t ${ImageName}:${imageTag} ."
+        sh "docker push ${ImageName}:${imageTag}"
+      }
+    }
     stage('Deploy Production') {
       // Production branch
       when { branch 'master' }
