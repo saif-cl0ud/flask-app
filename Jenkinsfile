@@ -18,6 +18,7 @@ pipeline {
         withDockerRegistry([credentialsId: "${Creds}", url: 'https://index.docker.io/v1/']) {
         sh "docker build -t ${ImageName}:${imageTag} ."
         sh "docker push ${ImageName}:${imageTag}"
+        }
       }
     }
     stage('Deploy Production') {
