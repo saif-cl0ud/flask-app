@@ -11,8 +11,10 @@ pipeline {
       steps {
         sh 'printenv'
         sh "git rev-parse --short HEAD > .git/commit-id"
-        imageTag= readFile('.git/commit-id').trim()
+         script {
+             imageTag= readFile('.git/commit-id').trim()
       }
+     }
     }
     stage('Build and push image with Container Builder') {
       steps {
