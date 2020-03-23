@@ -8,4 +8,6 @@ permissions:
      mode: 777
 hooks:
    ApplicationStart:
-     - location: startApp.sh
+     - location: startApp.shtest
+
+test
